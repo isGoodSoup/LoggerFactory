@@ -91,6 +91,15 @@ public class Utils {
 		return r.nextInt(1, 100);
 	}
 	
+	private String genMinorCheck(int age) {
+		return (age < 18) ? "MINOR" : "ADULT";
+	}
+	
+	private String genPosition() {
+		String[] positions = {"Manager", "Analyst", "Developer", "Designer", "Consultant", "Administrator", "Coordinator", "Specialist"};
+		return positions[r.nextInt(positions.length)];
+	}
+	
 	private String genDepartment() {
 		String[] departments = {"HR", "Finance", "IT", "Marketing", "Sales", "Operations", "Customer Service", "R&D"};
 		return departments[r.nextInt(departments.length)];
@@ -116,6 +125,10 @@ public class Utils {
 	
 	private double genSalary() {
 		return Math.round((30000 + (r.nextDouble() * 120000)) * 100.0) / 100.0;
+	}
+	
+	private String genSuccess() {
+		return (r.nextBoolean()) ? "SUCCESS" : "FAILURE";
 	}
 	
 	private String genUUID() {
@@ -149,17 +162,21 @@ public class Utils {
 		{
 			String separator = " | ";
 			String name = genName();
+			int age = genAge();
 			bw.append(
 				genLocalDate() + separator + 
 				"[main]" + separator +
 				genLogLevel() + separator + 
 				genJavaClass() + separator +
 				name + separator + 
-				genAge() + separator + 
+				age + separator + 
+				genMinorCheck(age) + separator +
+				genPosition() + separator +
 				genDepartment() + separator + 
 				genEmail(name) + separator +
 				genPercent() + separator +
 				genSalary() + separator +
+				genSuccess() + separator +
 				genUUID() + separator +
 				genBoolean() + separator +
 				genIP() + separator +
