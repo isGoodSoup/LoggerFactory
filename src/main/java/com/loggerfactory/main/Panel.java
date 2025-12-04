@@ -5,7 +5,7 @@ import com.loggerfactory.utils.Utils;
 public class Panel {
 	private Utils utils = new Utils();
 	private int counter = 0;
-	private final int MAX_COUNTER = 50000;
+	private int maxCounter = 1000;
 	
 	public Utils getUtils() {
 		return utils;
@@ -27,7 +27,11 @@ public class Panel {
 		this.counter++;
 	}
 
-	public int getMAX_COUNTER() {
-		return MAX_COUNTER;
+	public int getMaxCounter() {
+		return maxCounter;
+	}
+
+	public void setMaxCounter(int maxCounter) {
+		this.maxCounter = maxCounter;
 	}
 }

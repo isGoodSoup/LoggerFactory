@@ -5,14 +5,17 @@ import com.loggerfactory.interfaces.Initiable;
 public class AppLogger implements Initiable {
 	private final Panel panel = new Panel();
 	
-	public static void main(String[] args) {
-		new AppLogger().init();
-	}
+	public AppLogger() {}
 	
+	public AppLogger(int lines) {
+		super();
+		panel.setMaxCounter(lines);
+	}
+
 	@Override
 	public void init() {
 		panel.getUtils().clearLogFile();
-		for(int i = 0; i < panel.getMAX_COUNTER(); i++) {
+		for(int i = 0; i < panel.getMaxCounter(); i++) {
 			panel.getUtils().genLog();
 			panel.addCounter();
 		}
